@@ -4,10 +4,7 @@ fun main() {
 
     print("Please Insert Path of SASHome :")
     val SASHomePath = readLine()
-    print("Please Insert Path of SASCode :")
-    val sasCodePath = readLine()
-    print("Please Insert Path of SASData :")
-    val sasDataPath = readLine()
+
 
     val folders = listOf<String>("SASData","SASData/xerf","SASData/WL_Download",
     "SASData/Temp","SASLogs","SASLogs/Batch","SASLogs/Screening")
