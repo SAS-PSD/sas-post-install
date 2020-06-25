@@ -18,14 +18,29 @@
     </properties>
 
     <distributionManagement>
-<!--        <repository>-->
-<!--            <id>sas-repo</id>-->
-<!--            <url>https://maven.jetbrains.space/sas/sas</url>-->
-<!--        </repository>-->
+        <repository>
+            <id>sas-repo</id>
+            <url>https://maven.jetbrains.space/sas/sas</url>
+        </repository>
     </distributionManagement>
 
 
     <dependencies>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>3.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>7.2.2.jre8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>19.3</version>
+        </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
