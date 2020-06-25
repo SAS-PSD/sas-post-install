@@ -1,9 +1,9 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
     <changeSet author="motyim" id="1592916619800-1">
-        <createTable tableName="FSC_ACCOUNT_DIM_STAGE" schemaName="aml_stg">
+        <createTable tableName="FSC_ACCOUNT_STAGE" schemaName="aml_stg">
             <column name="account_number" type="varchar(50)">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_ACCOUNT_DIM_STAGE_pk"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_ACCOUNT_STAGE_pk"/>
             </column>
             <column name="line_of_business_name" type="nvarchar(35)"/>
             <column name="account_type_desc" type="nvarchar(20)">
@@ -59,9 +59,9 @@
         </createTable>
     </changeSet>
     <changeSet author="motyim" id="1592916619800-2">
-        <createTable tableName="FSC_ACCOUNT_PROFILE_FACT_STAGE" schemaName="aml_stg">
+        <createTable tableName="FSC_ACCOUNT_PROFILE_STAGE" schemaName="aml_stg">
             <column name="account_number" type="varchar(50)">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_ACCOUNT_PROFILE_FACT_STAGE_pk"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_ACCOUNT_PROFILE_STAGE_pk"/>
             </column>
             <column name="month_key" type="decimal(6, 0)">
                 <constraints nullable="false"/>
@@ -91,9 +91,9 @@
         </createTable>
     </changeSet>
     <changeSet author="motyim" id="1592916619800-3">
-        <createTable tableName="FSC_ASSOCIATE_DIM_STAGE" schemaName="aml_stg">
+        <createTable tableName="FSC_ASSOCIATE_STAGE" schemaName="aml_stg">
             <column name="associate_number" type="varchar(20)">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_ASSOCIATE_DIM_STAGE_pk"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_ASSOCIATE_STAGE_pk"/>
             </column>
             <column name="associate_first_name" type="nvarchar(50)"/>
             <column name="associate_last_name" type="nvarchar(200)"/>
@@ -115,9 +115,9 @@
         </createTable>
     </changeSet>
     <changeSet author="motyim" id="1592916619800-4">
-        <createTable tableName="FSC_BANK_DIM_STAGE" schemaName="aml_stg">
+        <createTable tableName="FSC_BANK_STAGE" schemaName="aml_stg">
             <column name="bank_number" type="varchar(25)">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_BANK_DIM_STAGE_pk"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_BANK_STAGE_pk"/>
             </column>
             <column name="bank_name" type="varchar(200)"/>
             <column name="bank_address_1" type="nvarchar(35)"/>
@@ -132,9 +132,9 @@
         </createTable>
     </changeSet>
     <changeSet author="motyim" id="1592916619800-5">
-        <createTable tableName="FSC_BRANCH_DIM_STAGE" schemaName="aml_stg">
+        <createTable tableName="FSC_BRANCH_STAGE" schemaName="aml_stg">
             <column name="branch_number" type="varchar(40)">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_BRANCH_DIM_STAGE_pk"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_BRANCH_STAGE_pk"/>
             </column>
             <column name="branch_type_desc" type="varchar(10)"/>
             <column name="branch_name" type="nvarchar(100)"/>
@@ -149,7 +149,7 @@
         </createTable>
     </changeSet>
     <changeSet author="motyim" id="1592916619800-6">
-        <createTable tableName="FSC_CASH_FLOW_BANK_BRIDGE_STAGE" schemaName="aml_stg">
+        <createTable tableName="FSC_CASH_FLOW_BANK_STAGE" schemaName="aml_stg">
             <column name="bank_number" type="varchar(25)">
                 <constraints nullable="false"/>
             </column>
@@ -161,9 +161,9 @@
         </createTable>
     </changeSet>
     <changeSet author="motyim" id="1592916619800-7">
-        <createTable tableName="FSC_CASH_FLOW_FACT_STAGE" schemaName="aml_stg">
+        <createTable tableName="FSC_CASH_FLOW_STAGE" schemaName="aml_stg">
             <column name="transaction_reference_number" type="varchar(50)">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_CASH_FLOW_FACT_STAGE_pk"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_CASH_FLOW_STAGE_pk"/>
             </column>
             <column name="account_number" type="varchar(50)">
                 <constraints nullable="false"/>
@@ -220,9 +220,9 @@
         </createTable>
     </changeSet>
     <changeSet author="motyim" id="1592916619800-8">
-        <createTable tableName="FSC_ENTITY_WATCH_LIST_DIM_STAGE" schemaName="aml_stg">
+        <createTable tableName="FSC_ENTITY_WATCH_LIST_STAGE" schemaName="aml_stg">
             <column name="entity_watch_list_number" type="varchar(35)">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_ENTITY_WATCH_LIST_DIM_STAGE_pk"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_ENTITY_WATCH_LIST_STAGE_pk"/>
             </column>
             <column name="watch_list_name" type="char(4)">
                 <constraints nullable="false"/>
@@ -264,9 +264,9 @@
         </createTable>
     </changeSet>
     <changeSet author="motyim" id="1592916619800-9">
-        <createTable tableName="FSC_EXT_PARTY_ACCOUNT_DIM_STAGE" schemaName="aml_stg">
+        <createTable tableName="FSC_EXT_PARTY_ACCOUNT_STAGE" schemaName="aml_stg">
             <column name="external_party_number" type="varchar(100)">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_EXT_PARTY_ACCOUNT_DIM_STAGE_pk"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_EXT_PARTY_ACCOUNT_STAGE_pk"/>
             </column>
             <column name="ext_party_type_desc" type="varchar(20)"/>
             <column name="full_name" type="nvarchar(200)"/>
@@ -302,23 +302,23 @@
         </createTable>
     </changeSet>
     <changeSet author="motyim" id="1592916619800-10">
-        <createTable tableName="FSC_PARTY_ACCOUNT_BRIDGE_STAGE" schemaName="aml_stg">
+        <createTable tableName="FSC_PARTY_ACCOUNT_STAGE" schemaName="aml_stg">
             <column name="ACCOUNT_NUMBER" type="varchar(50)">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_PARTY_ACCOUNT_BRIDGE_STAGE_pk"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_PARTY_ACCOUNT_STAGE_pk"/>
             </column>
             <column name="PARTY_NUMBER" type="varchar(50)">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_PARTY_ACCOUNT_BRIDGE_STAGE_pk"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_PARTY_ACCOUNT_STAGE_pk"/>
             </column>
             <column name="ROLE_KEY" type="decimal(2, 0)">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_PARTY_ACCOUNT_BRIDGE_STAGE_pk"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_PARTY_ACCOUNT_STAGE_pk"/>
             </column>
             <column name="ROLE_DESC" type="varchar(20)"/>
         </createTable>
     </changeSet>
     <changeSet author="motyim" id="1592916619800-11">
-        <createTable tableName="FSC_PARTY_DIM_STAGE" schemaName="aml_stg">
+        <createTable tableName="FSC_PARTY_STAGE" schemaName="aml_stg">
             <column name="PARTY_NUMBER" type="varchar(50)">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_PARTY_DIM_STAGE_pk"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_PARTY_STAGE_pk"/>
             </column>
             <column name="PARTY_TYPE_DESC" type="varchar(20)">
                 <constraints nullable="false"/>
@@ -402,9 +402,9 @@
         </createTable>
     </changeSet>
     <changeSet author="motyim" id="1592916619800-12">
-        <createTable tableName="FSC_PARTY_PROFILE_FACT_STAGE" schemaName="aml_stg">
+        <createTable tableName="FSC_PARTY_PROFILE_STAGE" schemaName="aml_stg">
             <column name="party_number" type="varchar(50)">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_PARTY_PROFILE_FACT_STAGE_pk"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_PARTY_PROFILE_STAGE_pk"/>
             </column>
             <column name="month_key" type="decimal(6, 0)">
                 <constraints nullable="false"/>

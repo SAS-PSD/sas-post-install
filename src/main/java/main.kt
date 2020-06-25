@@ -3,7 +3,7 @@ import java.io.File
 fun main() {
     var choose: Int?
     do {
-        println("Welcome to Installer ...\n1- setup folders\n2- setup AML Stag\n3- setup BU1\n4- setup BU2\n5- Exit")
+        println("Welcome to installer ...\n1- setup folders\n2- setup AML Stag\n3- setup BU1\n4- setup BU2\n5- Exit")
         choose = readLine()?.toInt()
         when (choose) {
             1 -> setupFolders()
@@ -47,7 +47,7 @@ fun openConnection(name: String): Connection {
     val host = readLine()
     print("Insert DB port : ")
     val port = readLine()
-    print("Insert DB name or service name (Oracle) : ")
+    print("Insert DB name (SQL Server) or service name (Oracle) : ")
     val service = readLine()
     print("Insert DB username : ")
     val username = readLine()
