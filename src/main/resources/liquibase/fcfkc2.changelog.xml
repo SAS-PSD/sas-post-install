@@ -1,0 +1,70 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    
+	<changeSet author="motyim" id="1591894232686-1">
+		<modifyDataType
+			columnName="ACTUAL_VALUES_TEXT"  
+            newDataType="NVARCHAR(1800)"  
+            schemaName="FCFKC2"
+            tableName="fsk_alert"/>
+		<modifyDataType
+			columnName="ALERT_DESCRIPTION"  
+            newDataType="NVARCHAR(500)"  
+            schemaName="FCFKC2"
+            tableName="fsk_alert"/>
+		<modifyDataType
+			columnName="ALERTED_ENTITY_NUMBER"  
+            newDataType="VARCHAR(100)"  
+            schemaName="FCFKC2"
+            tableName="fsk_alert"/>
+
+		<modifyDataType
+			columnName="PRIMARY_ENTITY_NUMBER"  
+            newDataType="VARCHAR(100)"  
+            schemaName="FCFKC2"
+            tableName="fsk_alert"/>
+
+		<modifyDataType
+			columnName="PRIMARY_ENTITY_NUMBER"  
+            newDataType="VARCHAR(100)"  
+            schemaName="FCFKC2"
+            tableName="fsk_alert"/>
+
+		<modifyDataType
+			columnName="ALERTED_ENTITY_NUMBER"  
+            newDataType="VARCHAR(100)"  
+            schemaName="FCFKC2"
+            tableName="fsk_alerted_entity"/>			
+    </changeSet>
+	
+	<changeSet author="motyim" id="1591894232686-2">
+		<sql>
+			insert into FSK_LOV
+			VALUES ( 'RT_CLOSE_REASON','BLK',	'en','Blocking Customer - Screening Only',7,'Y' );
+		</sql>  
+    </changeSet>
+	
+	<changeSet author="motyim" id="1591894232686-3">
+		<sql>
+			insert into FSK_LOV
+			VALUES ( 'RT_CLOSE_REASON','RLS',	'en','Release Customer - Screening Only',8,	'Y' );
+		</sql>  
+    </changeSet>
+
+	<changeSet author="motyim" id="1591894232686-4">
+		<update schemaName="FCFKC2"
+				tableName="fsk_lov">
+			<column name="ACTIVE_FLG"  value="Y"/>
+			<where>LOV_TYPE_DESC like '%Screening%' and LOV_TYPE_name like '%RT_CLOSE_REASON%'</where>
+		</update>
+	</changeSet>
+ 
+	<changeSet author="motyim" id="1591894232686-5">
+		<update schemaName="FCFKC2"
+				tableName="fsk_lov">
+			<column name="ACTIVE_FLG"  value="N"/>
+			<where> LOV_TYPE_DESC not like '%Screening%' and LOV_TYPE_name like '%RT_CLOSE_REASON%' and LOV_LANGUAGE_DESC = 'en'</where>
+		</update>
+	</changeSet>
+	
+</databaseChangeLog>

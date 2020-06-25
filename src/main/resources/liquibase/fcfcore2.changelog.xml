@@ -1,0 +1,47 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <changeSet author="motyim" id="1591894232686-1">
+        <createTable tableName="FSC_PARTY_DIM_MC" schemaName="FCFCORE2">
+            <column name="PARTY_KEY" type="decimal(12, 0)"/>
+            <column name="PARTY_NUMBER" type="varchar(100)"/>
+            <column name="PARTY_TYPE_DESC" type="varchar(20)"/>
+            <column name="PARTY_NAME" type="nvarchar(200)"/>
+            <column name="PTY_NM_1" type="nvarchar(200)"/>
+            <column name="PTY_NM_2" type="nvarchar(200)"/>
+            <column name="PTY_NM_3" type="nvarchar(200)"/>
+            <column name="PTY_NM_4" type="nvarchar(200)"/>
+            <column name="PTY_NM_5" type="nvarchar(200)"/>
+            <column name="PTY_NM_6" type="nvarchar(200)"/>
+            <column name="PTY_NM_7" type="nvarchar(200)"/>
+            <column name="PTY_NAME_CNT" type="int"/>
+            <column name="MATCH_CODE_PTY_1" type="nvarchar(200)"/>
+            <column name="MATCH_CODE_PTY_2" type="nvarchar(200)"/>
+            <column name="MATCH_CODE_PTY_3" type="nvarchar(200)"/>
+            <column name="MATCH_CODE_PTY_4" type="nvarchar(200)"/>
+            <column name="MATCH_CODE_PTY_5" type="nvarchar(200)"/>
+            <column name="MATCH_CODE_PTY_6" type="nvarchar(200)"/>
+            <column name="MATCH_CODE_PTY_7" type="nvarchar(200)"/>
+            <column name="CHANGE_BEGIN_DATE" type="date"/>
+            <column name="CHANGE_END_DATE" type="date"/>
+            <column name="CHANGE_CURRENT_IND" type="char(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="motyim" id="1591894232686-2" >
+        <createTable tableName="JOB_STATISTICS" schemaName="FCFCORE2">
+            <column name="DATETIME" type="datetime"/>
+            <column name="MODULE" type="varchar(3)"/>
+            <column name="PROCESS" type="varchar(80)"/>
+            <column name="METRIC" type="varchar(200)"/>
+            <column name="VALUE" type="varchar(200)"/>
+        </createTable>
+    </changeSet>
+	
+	<changeSet author="motyim" id="1591894232686-3">
+		<modifyDataType
+			columnName="ENTITY_NAME"  
+            newDataType="nvarchar(800)"  
+            schemaName="FCFCORE2"
+            tableName="fsc_entity_watch_list_dim"/> 
+    </changeSet>
+
+</databaseChangeLog>

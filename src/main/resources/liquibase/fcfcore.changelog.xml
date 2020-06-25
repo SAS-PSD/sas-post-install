@@ -1,0 +1,63 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <changeSet author="motyim" id="1591892351392-1">
+        <createTable tableName="FSC_ERRORS_STG" schemaName="FCFCORE">
+            <column name="TABLE_NAME" type="varchar(2048)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="JOB_NAME" type="varchar(2048)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ERROR_RECORD" type="varchar(2048)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LOAD_DATE" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="KEY" type="varchar(2048)"/>
+            <column name="ERROR_DESC" type="varchar(2048)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="motyim" id="1591892351392-2">
+        <createTable tableName="JOB_CALENDAR" schemaName="FCFCORE">
+            <column name="JOB_CALENDAR_ID" type="decimal(5, 0)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_JOB_CALENDAR"/>
+            </column>
+            <column name="CALENDAR_DATE" type="date"/>
+            <column defaultValue="N" defaultValueConstraintName="DF__JOB_CALEN__STG_S__398D8EEE" name="STG_STATUS_IND" type="char(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="N" defaultValueConstraintName="DF__JOB_CALEN__ETL_S__3A81B327" name="ETL_STATUS_IND" type="char(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="N" defaultValueConstraintName="DF__JOB_CALEN__AGP_S__3B75D760" name="AGP_STATUS_IND" type="char(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="motyim" id="1591892351392-3">
+        <createTable tableName="JOB_STATISTICS" schemaName="FCFCORE">
+            <column name="DATETIME" type="datetime"/>
+            <column name="MODULE" type="varchar(3)"/>
+            <column name="PROCESS" type="varchar(80)"/>
+            <column name="METRIC" type="varchar(200)"/>
+            <column name="VALUE" type="varchar(200)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="motyim" id="1591892351392-4">
+        <modifyDataType
+                columnName="ENTITY_NAME"
+                newDataType="nvarchar(800)"
+                schemaName="FCFCORE"
+                tableName="fsc_entity_watch_list_dim"/>
+    </changeSet>
+
+    <changeSet author="motyim" id="1591892351392-5">
+        <sql>
+            insert into fcfcore.JOB_CALENDAR
+            select job_calendar_id, calendar_date,'N','N','N' from fcfkc.fsk_job_calendar;
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

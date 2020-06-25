@@ -1,0 +1,433 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <changeSet author="motyim" id="1592916619800-1">
+        <createTable tableName="FSC_ACCOUNT_DIM_STAGE" schemaName="aml_stg">
+            <column name="account_number" type="varchar(50)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_ACCOUNT_DIM_STAGE_pk"/>
+            </column>
+            <column name="line_of_business_name" type="nvarchar(35)"/>
+            <column name="account_type_desc" type="nvarchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_currency_code" type="char(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_currency_name" type="nvarchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_registration_type_desc" type="nvarchar(20)"/>
+            <column name="account_registration_name" type="nvarchar(255)"/>
+            <column name="account_name" type="nvarchar(200)"/>
+            <column name="alternate_name" type="nvarchar(35)"/>
+            <column name="account_open_date" type="datetime"/>
+            <column name="account_close_date" type="datetime"/>
+            <column name="account_status_desc" type="varchar(35)"/>
+            <column name="dormant_ind" type="char(1)"/>
+            <column name="product_line_name" type="nvarchar(35)"/>
+            <column name="product_category_name" type="nvarchar(35)"/>
+            <column name="product_type_name" type="nvarchar(35)"/>
+            <column name="product_name" type="nvarchar(35)"/>
+            <column name="product_number" type="varchar(25)"/>
+            <column name="account_tax_id" type="varchar(35)"/>
+            <column name="account_tax_id_type_code" type="char(1)"/>
+            <column name="account_tax_state_code" type="char(3)"/>
+            <column name="account_primary_branch_name" type="nvarchar(25)"/>
+            <column name="mailing_address_1" type="nvarchar(35)"/>
+            <column name="mailing_address_2" type="nvarchar(35)"/>
+            <column name="mailing_city_name" type="nvarchar(35)"/>
+            <column name="mailing_state_code" type="char(3)"/>
+            <column name="mailing_state_name" type="nvarchar(35)"/>
+            <column name="mailing_postal_code" type="char(10)"/>
+            <column name="mailing_country_code" type="char(3)"/>
+            <column name="mailing_country_name" type="nvarchar(100)"/>
+            <column name="currency_based_account_ind" type="char(1)"/>
+            <column name="maturity_date" type="datetime"/>
+            <column name="original_loan_amount" type="decimal(15, 5)"/>
+            <column name="collateral_type_code" type="char(10)"/>
+            <column name="collateral_type_desc" type="nvarchar(35)"/>
+            <column name="insured_amount" type="decimal(15, 5)"/>
+            <column name="employee_ind" type="char(1)"/>
+            <column name="letter_of_credit_onfile_ind" type="char(1)"/>
+            <column name="cash_intensive_business_ind" type="char(1)"/>
+            <column name="trade_finance_ind" type="char(1)"/>
+            <column name="foreign_flag_status" type="varchar(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Credit_ceiling" type="decimal(15, 5)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="motyim" id="1592916619800-2">
+        <createTable tableName="FSC_ACCOUNT_PROFILE_FACT_STAGE" schemaName="aml_stg">
+            <column name="account_number" type="varchar(50)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_ACCOUNT_PROFILE_FACT_STAGE_pk"/>
+            </column>
+            <column name="month_key" type="decimal(6, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transactions_count" type="decimal(10, 0)"/>
+            <column name="deposits_count" type="decimal(10, 0)"/>
+            <column name="withdrawals_count" type="decimal(10, 0)"/>
+            <column name="wires_count" type="decimal(10, 0)"/>
+            <column name="cash_transactions_count" type="decimal(10, 0)"/>
+            <column name="account_value_amount" type="decimal(18, 5)"/>
+            <column name="total_transactions_amount" type="decimal(18, 5)"/>
+            <column name="total_credits_amount" type="decimal(18, 5)"/>
+            <column name="total_debits_amount" type="decimal(18, 5)"/>
+            <column name="total_cash_debits_amount" type="decimal(18, 5)"/>
+            <column name="total_cash_credits_amount" type="decimal(18, 5)"/>
+            <column name="total_wire_credits_amount" type="decimal(18, 5)"/>
+            <column name="total_wire_debits_amount" type="decimal(18, 5)"/>
+            <column name="beginning_balance_amount" type="decimal(18, 5)"/>
+            <column name="average_daily_balance_amount" type="decimal(18, 5)"/>
+            <column name="ending_cash_balance_amount" type="decimal(18, 5)"/>
+            <column name="max_account_value_amount" type="decimal(18, 5)"/>
+            <column name="min_account_value_amount" type="decimal(18, 5)"/>
+            <column name="avg_account_value_amount" type="decimal(18, 5)"/>
+            <column name="cust_initiated_trans_count" type="decimal(10, 0)"/>
+            <column name="largest_credit_amount" type="decimal(18, 5)"/>
+            <column name="largest_debit_amount" type="decimal(18, 5)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="motyim" id="1592916619800-3">
+        <createTable tableName="FSC_ASSOCIATE_DIM_STAGE" schemaName="aml_stg">
+            <column name="associate_number" type="varchar(20)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_ASSOCIATE_DIM_STAGE_pk"/>
+            </column>
+            <column name="associate_first_name" type="nvarchar(50)"/>
+            <column name="associate_last_name" type="nvarchar(200)"/>
+            <column name="associate_middle_name" type="nvarchar(100)"/>
+            <column name="associate_title_desc" type="nvarchar(50)"/>
+            <column name="associate_status_desc" type="nvarchar(35)"/>
+            <column name="street_address_1" type="nvarchar(35)"/>
+            <column name="street_address_2" type="nvarchar(35)"/>
+            <column name="street_city_name" type="nvarchar(35)"/>
+            <column name="street_state_code" type="char(3)"/>
+            <column name="street_state_name" type="nvarchar(35)"/>
+            <column name="street_postal_code" type="char(10)"/>
+            <column name="street_country_name" type="nvarchar(100)"/>
+            <column name="street_country_code" type="char(3)"/>
+            <column name="work_phone_number" type="varchar(25)"/>
+            <column name="email_address" type="nvarchar(35)"/>
+            <column name="branch_number" type="varchar(25)"/>
+            <column name="branch_name" type="nvarchar(35)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="motyim" id="1592916619800-4">
+        <createTable tableName="FSC_BANK_DIM_STAGE" schemaName="aml_stg">
+            <column name="bank_number" type="varchar(25)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_BANK_DIM_STAGE_pk"/>
+            </column>
+            <column name="bank_name" type="varchar(200)"/>
+            <column name="bank_address_1" type="nvarchar(35)"/>
+            <column name="bank_address_2" type="nvarchar(35)"/>
+            <column name="bank_city_name" type="nvarchar(35)"/>
+            <column name="bank_state_code" type="char(3)"/>
+            <column name="bank_state_name" type="nvarchar(35)"/>
+            <column name="bank_postal_code" type="char(10)"/>
+            <column name="bank_country_code" type="char(3)"/>
+            <column name="bank_country_name" type="char(35)"/>
+            <column name="bank_phone_number" type="varchar(25)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="motyim" id="1592916619800-5">
+        <createTable tableName="FSC_BRANCH_DIM_STAGE" schemaName="aml_stg">
+            <column name="branch_number" type="varchar(40)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_BRANCH_DIM_STAGE_pk"/>
+            </column>
+            <column name="branch_type_desc" type="varchar(10)"/>
+            <column name="branch_name" type="nvarchar(100)"/>
+            <column name="street_address_1" type="nvarchar(35)"/>
+            <column name="street_address_2" type="nvarchar(35)"/>
+            <column name="street_city_name" type="nvarchar(35)"/>
+            <column name="street_state_code" type="char(3)"/>
+            <column name="street_state_name" type="nvarchar(35)"/>
+            <column name="street_postal_code" type="char(10)"/>
+            <column name="street_country_code" type="char(3)"/>
+            <column name="street_country_name" type="nvarchar(100)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="motyim" id="1592916619800-6">
+        <createTable tableName="FSC_CASH_FLOW_BANK_BRIDGE_STAGE" schemaName="aml_stg">
+            <column name="bank_number" type="varchar(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transaction_reference_number" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_desc" type="varchar(20)"/>
+            <column name="sequence_number" type="decimal(2, 0)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="motyim" id="1592916619800-7">
+        <createTable tableName="FSC_CASH_FLOW_FACT_STAGE" schemaName="aml_stg">
+            <column name="transaction_reference_number" type="varchar(50)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_CASH_FLOW_FACT_STAGE_pk"/>
+            </column>
+            <column name="account_number" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country_code_3" type="char(3)"/>
+            <column name="country_code_2" type="char(2)"/>
+            <column name="transaction_type_key" type="decimal(12, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tran_dt" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transaction_status_key" type="decimal(5, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transaction_currency_code" type="char(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="branch_number" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remitter_ext_party_number" type="varchar(100)"/>
+            <column name="remitter_type_desc" type="varchar(20)"/>
+            <column name="remitter_full_name" type="varchar(200)"/>
+            <column name="beneficiary_ext_party_number" type="varchar(100)"/>
+            <column name="beneficiary_type_desc" type="varchar(20)"/>
+            <column name="beneficiary_full_name" type="varchar(200)"/>
+            <column name="tran_posted_dt" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="associate_number" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="executing_party_number" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency_amount" type="decimal(18, 5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency_amount_in_txn_ccy" type="decimal(18, 5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency_amount_in_account_ccy" type="decimal(18, 5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="secondary_account_number" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transaction_description" type="varchar(255)"/>
+            <column name="related_ind" type="char(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="third_party_ind" type="char(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="motyim" id="1592916619800-8">
+        <createTable tableName="FSC_ENTITY_WATCH_LIST_DIM_STAGE" schemaName="aml_stg">
+            <column name="entity_watch_list_number" type="varchar(35)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_ENTITY_WATCH_LIST_DIM_STAGE_pk"/>
+            </column>
+            <column name="watch_list_name" type="char(4)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category_desc" type="nvarchar(50)"/>
+            <column name="type_desc" type="nvarchar(20)"/>
+            <column name="programs" type="nvarchar(250)"/>
+            <column name="tax_id" type="varchar(35)"/>
+            <column name="tax_id_type_code" type="char(1)"/>
+            <column name="identification_id" type="varchar(255)"/>
+            <column name="identification_type_desc" type="varchar(255)"/>
+            <column name="date_of_birth" type="datetime"/>
+            <column name="year_of_birth" type="decimal(4, 0)"/>
+            <column name="place_of_birth" type="nvarchar(100)"/>
+            <column name="deceased_ind" type="char(1)"/>
+            <column name="first_name" type="nvarchar(350)"/>
+            <column name="last_name" type="nvarchar(350)"/>
+            <column name="middle_name" type="nvarchar(255)"/>
+            <column name="entity_name" type="nvarchar(800)"/>
+            <column name="entity_title" type="nvarchar(200)"/>
+            <column name="occupation_desc" type="nvarchar(500)"/>
+            <column name="address" type="nvarchar(750)"/>
+            <column name="city_name" type="nvarchar(255)"/>
+            <column name="state_name" type="nvarchar(50)"/>
+            <column name="postal_code" type="char(30)"/>
+            <column name="country_code" type="char(3)"/>
+            <column name="country_name" type="nvarchar(255)"/>
+            <column name="full_address" type="nvarchar(1200)"/>
+            <column name="citizenship_country_code" type="char(3)"/>
+            <column name="citizenship_country_name" type="nvarchar(100)"/>
+            <column name="nationality_country_code" type="char(3)"/>
+            <column name="nationality_country_name" type="nvarchar(100)"/>
+            <column name="org_country_of_business_code" type="varchar(3)"/>
+            <column name="org_country_of_business_name" type="nvarchar(100)"/>
+            <column name="politically_exposed_person_ind" type="char(1)"/>
+            <column name="create_date" type="datetime"/>
+            <column name="update_date" type="datetime"/>
+            <column name="exclude_ind" type="char(1)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="motyim" id="1592916619800-9">
+        <createTable tableName="FSC_EXT_PARTY_ACCOUNT_DIM_STAGE" schemaName="aml_stg">
+            <column name="external_party_number" type="varchar(100)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_EXT_PARTY_ACCOUNT_DIM_STAGE_pk"/>
+            </column>
+            <column name="ext_party_type_desc" type="varchar(20)"/>
+            <column name="full_name" type="nvarchar(200)"/>
+            <column name="last_name" type="nvarchar(50)"/>
+            <column name="first_name" type="nvarchar(50)"/>
+            <column name="middle_name" type="nvarchar(100)"/>
+            <column name="birth_date" type="datetime"/>
+            <column name="party_tax_id" type="varchar(35)"/>
+            <column name="party_tax_id_type_code" type="char(1)"/>
+            <column name="street_address_1" type="nvarchar(35)"/>
+            <column name="street_address_2" type="nvarchar(35)"/>
+            <column name="street_city_name" type="nvarchar(35)"/>
+            <column name="street_state_code" type="char(3)"/>
+            <column name="street_state_name" type="nvarchar(35)"/>
+            <column name="street_postal_code" type="char(10)"/>
+            <column name="street_country_code" type="char(3)"/>
+            <column name="street_country_name" type="nvarchar(100)"/>
+            <column name="account_number" type="varchar(50)"/>
+            <column name="bank_number" type="varchar(25)"/>
+            <column name="branch_number" type="varchar(25)"/>
+            <column name="branch_name" type="nvarchar(35)"/>
+            <column name="citizenship_country_code" type="char(3)"/>
+            <column name="citizenship_country_name" type="nvarchar(100)"/>
+            <column name="residence_country_code" type="char(3)"/>
+            <column name="residence_country_name" type="nvarchar(100)"/>
+            <column name="phone_number_1" type="varchar(25)"/>
+            <column name="phone_number_2" type="varchar(25)"/>
+            <column name="identification_id" type="varchar(35)"/>
+            <column name="identification_type_desc" type="char(4)"/>
+            <column name="identification_state_code" type="char(3)"/>
+            <column name="identification_country_code" type="char(3)"/>
+            <column name="identification_country_name" type="nvarchar(100)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="motyim" id="1592916619800-10">
+        <createTable tableName="FSC_PARTY_ACCOUNT_BRIDGE_STAGE" schemaName="aml_stg">
+            <column name="ACCOUNT_NUMBER" type="varchar(50)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_PARTY_ACCOUNT_BRIDGE_STAGE_pk"/>
+            </column>
+            <column name="PARTY_NUMBER" type="varchar(50)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_PARTY_ACCOUNT_BRIDGE_STAGE_pk"/>
+            </column>
+            <column name="ROLE_KEY" type="decimal(2, 0)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_PARTY_ACCOUNT_BRIDGE_STAGE_pk"/>
+            </column>
+            <column name="ROLE_DESC" type="varchar(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="motyim" id="1592916619800-11">
+        <createTable tableName="FSC_PARTY_DIM_STAGE" schemaName="aml_stg">
+            <column name="PARTY_NUMBER" type="varchar(50)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_PARTY_DIM_STAGE_pk"/>
+            </column>
+            <column name="PARTY_TYPE_DESC" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PARTY_TAX_ID" type="varchar(35)"/>
+            <column name="PARTY_TAX_ID_TYPE_CODE" type="char(1)"/>
+            <column name="PARTY_IDENTIFICATION_ID" type="nvarchar(35)"/>
+            <column name="PARTY_IDENTIFICATION_TYPE_DESC" type="char(4)"/>
+            <column name="PARTY_ID_STATE_CODE" type="char(3)"/>
+            <column name="PARTY_DATE_OF_BIRTH" type="datetime"/>
+            <column name="PARTY_FIRST_NAME" type="nvarchar(50)"/>
+            <column name="PARTY_LAST_NAME" type="nvarchar(50)"/>
+            <column name="PARTY_MIDDLE_NAME" type="nvarchar(100)"/>
+            <column name="PARTY_NAME" type="nvarchar(200)"/>
+            <column name="DOING_BUSINESS_AS_NAME" type="nvarchar(35)"/>
+            <column name="PARTY_STATUS_DESC" type="nvarchar(20)"/>
+            <column name="ULTIMATE_PARENT_NAME" type="nvarchar(35)"/>
+            <column name="STREET_ADDRESS_1" type="nvarchar(35)"/>
+            <column name="STREET_ADDRESS_2" type="nvarchar(35)"/>
+            <column name="STREET_CITY_NAME" type="nvarchar(35)"/>
+            <column name="STREET_STATE_CODE" type="char(3)"/>
+            <column name="STREET_STATE_NAME" type="nvarchar(35)"/>
+            <column name="STREET_POSTAL_CODE" type="char(10)"/>
+            <column name="STREET_COUNTRY_CODE" type="char(3)"/>
+            <column name="STREET_COUNTRY_NAME" type="nvarchar(100)"/>
+            <column name="MAILING_ADDRESS_1" type="nvarchar(35)"/>
+            <column name="MAILING_ADDRESS_2" type="nvarchar(35)"/>
+            <column name="MAILING_CITY_NAME" type="nvarchar(35)"/>
+            <column name="MAILING_STATE_CODE" type="char(3)"/>
+            <column name="MAILING_STATE_NAME" type="nvarchar(35)"/>
+            <column name="MAILING_POSTAL_CODE" type="char(10)"/>
+            <column name="MAILING_COUNTRY_CODE" type="char(3)"/>
+            <column name="MAILING_COUNTRY_NAME" type="nvarchar(100)"/>
+            <column name="RESIDENCE_COUNTRY_CODE" type="char(3)"/>
+            <column name="RESIDENCE_COUNTRY_NAME" type="nvarchar(100)"/>
+            <column name="CITIZENSHIP_COUNTRY_CODE" type="char(3)"/>
+            <column name="CITIZENSHIP_COUNTRY_NAME" type="nvarchar(100)"/>
+            <column name="ORG_COUNTRY_OF_BUSINESS_CODE" type="char(3)"/>
+            <column name="ORG_COUNTRY_OF_BUSINESS_NAME" type="nvarchar(100)"/>
+            <column name="EMPLOYEE_IND" type="char(1)"/>
+            <column name="EMPLOYEE_NUMBER" type="nvarchar(20)"/>
+            <column name="EMPLOYER_NAME" type="nvarchar(35)"/>
+            <column name="EMPLOYER_PHONE_NUMBER" type="varchar(25)"/>
+            <column name="EMAIL_ADDRESS" type="nvarchar(35)"/>
+            <column name="OCCUPATION_DESC" type="nvarchar(35)"/>
+            <column name="INDUSTRY_CODE" type="char(10)"/>
+            <column name="INDUSTRY_DESC" type="nvarchar(255)"/>
+            <column name="PHONE_NUMBER_1" type="varchar(25)"/>
+            <column name="PHONE_NUMBER_2" type="varchar(25)"/>
+            <column name="PHONE_NUMBER_3" type="varchar(25)"/>
+            <column name="ANNUAL_INCOME_AMOUNT" type="decimal(10, 0)"/>
+            <column name="NET_WORTH_AMOUNT" type="decimal(10, 0)"/>
+            <column name="MARITAL_STATUS_DESC" type="nvarchar(20)"/>
+            <column name="LAST_CONTACT_DATE" type="datetime"/>
+            <column name="POLITICALLY_EXPOSED_PERSON_IND" type="char(1)"/>
+            <column name="NON_PROFIT_ORG_IND" type="char(1)"/>
+            <column name="CUSTOMER_SINCE_DATE" type="datetime"/>
+            <column name="RISK_CLASSIFICATION" type="decimal(1, 0)"/>
+            <column name="FOREIGN_CONSULATE_EMBASSY_IND" type="char(1)"/>
+            <column name="MSB_IND" type="char(1)"/>
+            <column name="INTERNET_GAMBLING_IND" type="char(1)"/>
+            <column name="LEGAL_ENTITY_TYPE" type="nvarchar(30)"/>
+            <column name="TRUST_ACCOUNT_IND" type="char(1)"/>
+            <column name="NEGATIVE_NEWS_IND" type="char(1)"/>
+            <column name="SUSP_ACTV_RPT_COUNT" type="decimal(4, 0)"/>
+            <column name="SNAPSHOT_DT" type="datetime"/>
+            <column name="LAST_CASH_TRANS_RPT_DATE" type="datetime"/>
+            <column name="LAST_SUSP_ACTV_RPT_DATE" type="datetime"/>
+            <column name="CREDIT_CEILING" type="decimal(15, 5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DEBIT_CEILING" type="decimal(15, 5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ESTIMATE_TRANSACTION_COUNT" type="decimal(15, 5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ESTIMATE_TRANSACTION_AMOUNT" type="decimal(15, 5)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="motyim" id="1592916619800-12">
+        <createTable tableName="FSC_PARTY_PROFILE_FACT_STAGE" schemaName="aml_stg">
+            <column name="party_number" type="varchar(50)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FSC_PARTY_PROFILE_FACT_STAGE_pk"/>
+            </column>
+            <column name="month_key" type="decimal(6, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="aggregate_assets_amount" type="decimal(18, 5)"/>
+            <column name="transactions_count" type="decimal(10, 0)"/>
+            <column name="deposits_count" type="decimal(10, 0)"/>
+            <column name="withdrawals_count" type="decimal(10, 0)"/>
+            <column name="wires_count" type="decimal(10, 0)"/>
+            <column name="cash_transactions_count" type="decimal(10, 0)"/>
+            <column name="account_value_amount" type="decimal(18, 5)"/>
+            <column name="total_transactions_amount" type="decimal(18, 5)"/>
+            <column name="total_credits_amount" type="decimal(18, 5)"/>
+            <column name="total_debits_amount" type="decimal(18, 5)"/>
+            <column name="total_cash_debits_amount" type="decimal(18, 5)"/>
+            <column name="total_cash_credits_amount" type="decimal(18, 5)"/>
+            <column name="total_wire_credits_amount" type="decimal(18, 5)"/>
+            <column name="total_wire_debits_amount" type="decimal(18, 5)"/>
+            <column name="largest_credit_amount" type="decimal(18, 5)"/>
+            <column name="largest_debit_amount" type="decimal(18, 5)"/>
+            <column name="funds_payment_svcs_count" type="decimal(10, 0)"/>
+            <column name="funds_transfer_count" type="decimal(10, 0)"/>
+            <column name="monetary_instrument_count" type="decimal(10, 0)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

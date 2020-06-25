@@ -1,0 +1,68 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    
+	<changeSet author="motyim" id="1591894232686-1">
+		<sql>
+			update fcfkc.FSK_job_calendar set business_day_count = job_calendar_id
+		</sql>
+	</changeSet>
+ 
+	<changeSet author="motyim" id="1591894232686-2">
+		<update schemaName="fcfkc"
+				tableName="FSK_job_calendar">
+			<column name="rundate_ind"  value="Y"/>
+			<column name="daily_rundate_ind"  value="Y"/>
+		</update>
+	</changeSet>
+	
+	<changeSet author="motyim" id="1591894232686-3">
+		<update schemaName="fcfkc"
+				tableName="FSK_job_calendar">
+			<column name="weekly_rundate_ind"  value="N"/>
+		</update>
+	</changeSet>
+	
+	<changeSet author="motyim" id="1591894232686-4S">
+		<preConditions onFail="CONTINUE">
+			<dbms type="mssql"/>
+		</preConditions>
+		<sql>
+			update fcfkc.FSK_job_calendar set weekly_rundate_ind ='Y' where DATENAME(dw,CALENDAR_DATE) = 'Sunday';
+		</sql>
+	</changeSet>
+	<changeSet author="motyim" id="1591894232686-4O">
+		<preConditions onFail="CONTINUE">
+			<dbms type="oracle"/>
+		</preConditions>
+		<sql>
+			update fcfkc.FSK_job_calendar set weekly_rundate_ind ='Y' where TO_CHAR(CALENDAR_DATE,'DAY') like 'SUNDAY%';
+		</sql>
+	</changeSet>
+
+	
+	<changeSet author="motyim" id="1591894232686-5">
+		<update schemaName="fcfkc"
+				tableName="FSK_job_calendar">
+			<column name="monthly_rundate_ind"  value="N"/>
+		</update>
+	</changeSet>
+	
+	<changeSet author="motyim" id="1591894232686-6s">
+		<preConditions onFail="CONTINUE">
+			<dbms type="mssql"/>
+		</preConditions>
+		<sql>
+			update fcfkc.FSK_job_calendar set monthly_rundate_ind ='Y' where DATENAME(d,CALENDAR_DATE) = 1;
+		</sql>
+	</changeSet>
+	
+	<changeSet author="motyim" id="1591894232686-6o">
+		<preConditions onFail="CONTINUE">
+			<dbms type="oracle"/>
+		</preConditions>
+		<sql>
+			update fcfkc.FSK_job_calendar set monthly_rundate_ind ='Y' where TO_CHAR(CALENDAR_DATE,'DD') = '01';
+		</sql>
+	</changeSet>
+
+</databaseChangeLog>
