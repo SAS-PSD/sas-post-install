@@ -4,13 +4,26 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.sas</groupId>
     <artifactId>sas-post-install</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <developers>
+        <developer>
+            <name>Mohamed Ahmed Elmotyim</name>
+            <email>mohamed.elmotyim@sas.com</email>
+        </developer>
+    </developers>
     <properties>
         <kotlin.version>1.3.72</kotlin.version>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>sas-repo</id>
+            <url>https://maven.jetbrains.space/sas/sas</url>
+        </repository>
+    </distributionManagement>
+
 
     <dependencies>
         <dependency>
