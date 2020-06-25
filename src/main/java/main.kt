@@ -1,4 +1,13 @@
+import liquibase.Contexts
+import liquibase.LabelExpression
+import liquibase.Liquibase
+import liquibase.database.DatabaseFactory
+import liquibase.database.jvm.JdbcConnection
+import liquibase.resource.ClassLoaderResourceAccessor
 import java.io.File
+import java.sql.Connection
+import java.sql.DriverManager
+
 
 fun main() {
     var choose: Int?
@@ -65,17 +74,17 @@ private fun setupFolders() {
     val homePath = readLine()
 
 
-    val folders = listOf<String>("SASData","SASData/xerf","SASData/WL_Download",
-    "SASData/Temp","SASLogs","SASLogs/Batch","SASLogs/Screening")
+    val folders = listOf("SASData", "SASData/xerf", "SASData/WL_Download",
+            "SASData/Temp", "SASLogs", "SASLogs/Batch", "SASLogs/Screening")
 
     println("# Create Dirs...")
     for (folder in folders)
-        if(File("$SASHomePath/$folder").mkdir()) println("$folder created") else println("$folder not created ")
+        if (File("$homePath/$folder").mkdir()) println("$folder created") else println("$folder not created ")
 
 
     println("# Copy files...")
-    val copyFiles = listOf<String>("SASData/DM","SASCode/Screening")
-    for(folder in copyFiles)
+    val copyFiles = listOf("SASData/DM", "SASCode/Screening")
+    for (folder in copyFiles)
         File("./$folder")
                 .copyRecursively(File("$homePath/$folder"),
                         true)
@@ -83,6 +92,4 @@ private fun setupFolders() {
                     println("Error Coping file...")
                     throw exception
                 }.also { println("$folder copied successfully...") }
-
-
 }
