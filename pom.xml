@@ -19,9 +19,8 @@
 
     <distributionManagement>
         <repository>
-            <id>maven.oracle.com</id>
-            <name>oracle-maven-repo</name>
-            <url>https://maven.oracle.com</url>
+            <id>sas-repo</id>
+            <url>https://maven.jetbrains.space/sas/sas</url>
         </repository>
     </distributionManagement>
 
