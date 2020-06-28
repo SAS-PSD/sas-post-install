@@ -6,7 +6,7 @@
         <server>
             <id>sas-repo</id>
             <username>motyim</username>
-            <password>${SAS_REPO_TOKEN}</password>
+            <password>S@$2020$p@Ce</password>
         </server>
     </servers>
 </settings>
