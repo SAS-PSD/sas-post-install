@@ -1,9 +1,12 @@
+package com.sas.installer
+
 import liquibase.Contexts
 import liquibase.LabelExpression
 import liquibase.Liquibase
 import liquibase.database.DatabaseFactory
 import liquibase.database.jvm.JdbcConnection
 import liquibase.resource.ClassLoaderResourceAccessor
+import oracle.jdbc.OracleDriver
 import java.io.File
 import java.sql.Connection
 import java.sql.DriverManager
@@ -64,7 +67,11 @@ fun openConnection(name: String): Connection {
     val password = readLine()
     print("DB server : \n1- oracle\n2- sql server ")
     val server = readLine()?.toInt()
-    val connection = if (server == 1) "jdbc:oracle:thin:@//$host:$port/$service" else "jdbc:sqlserver://$host:$port;database=$service"
+    val connection = if (server == 1){
+        DriverManager.registerDriver(OracleDriver())
+        "jdbc:oracle:thin:@//$host:$port/$service"
+    }
+    else "jdbc:sqlserver://$host:$port;database=$service"
     println("Connection String : $connection")
     return DriverManager.getConnection(connection, username, password)
 }
