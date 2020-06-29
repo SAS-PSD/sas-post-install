@@ -90,7 +90,7 @@ private fun setupFolders() {
 
 
     println("# Copy files...")
-    val copyFiles = listOf("SASData/DM", "SASCode/Screening","SASCode/Screening")
+    val copyFiles = listOf("SASData", "SASCode")
     for (folder in copyFiles)
         File("./$folder")
                 .copyRecursively(File("$homePath/$folder"),
