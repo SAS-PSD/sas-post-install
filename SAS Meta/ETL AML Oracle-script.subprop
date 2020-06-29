@@ -1,0 +1,80 @@
+# SAS package substitution properties
+PackageUUID=21fbc46e-524d-4ab4-a9b4-0d7d1361e2be
+ExportTime=2020-06-28T13:39:52
+
+# --------------------------- Instructions ---------------------------
+#
+# This property file can be used during a batch import process
+# to apply specific changes to the objects being imported.
+# This file can potentially contain two types of properties:
+# connection properties and substitution properties.
+#
+# Connection properties are used to describe the connection between an
+# object being imported and an existing object on the target metadata
+# server.  All of these properties are included within sections
+# labeled [Connections].
+#
+# To update the connection property settings, modify the properties
+# containing the keyword "Target" in their name.  This includes
+# entries labeled "TargetName", "TargetPath", or "TargetDirectory".
+#
+# For instance, to change which application server the objects being
+# imported should be connected to, the following change can be made:
+# ApplicationServer[1].SourceName=SASMain
+# ApplicationServer[1].TargetName=SAS Application Server
+#
+# When the package file is imported, any object that was originally 
+# associated to "SASMain" on the source server will now be 
+# associated to "SAS Application Server" on the target server.
+#
+# Substitution properties allow modifications to object-specific
+# values.  These values may include physical paths, descriptions,
+# or port numbers, for example.  All of these properties are included
+# within sections labeled by an object's path.
+#
+# To update an object-specific property value, simply modify the
+# proper value.  For instance, to change which path a library uses,
+# edit the value of the "DirPath" property.
+# Do not modify any "Path" property that contains the keyword
+# "ApplicationServer".  This property is used as context only.
+#
+# --------------------------------------------------------------------
+
+[/System/Servers/ETL AML(Server)]
+Host=devsascompute.bayanpay.aml
+
+DirPath[1]=SASBAP
+# The following Database Server properties are provided for
+# context only and may not be modified. Directory Path for this Server
+# should be valid for each of the following Connection of Server.
+DirPath.SASClientConnection[1]=Connection: FCFBU1 Core:ETL AML
+
+DirPath[2]=SASBAP
+# The following Database Server properties are provided for
+# context only and may not be modified. Directory Path for this Server
+# should be valid for each of the following Connection of Server.
+DirPath.SASClientConnection[2]=Connection: FCFBU1 KC:ETL AML
+
+DirPath[3]=SASBAP
+# The following Database Server properties are provided for
+# context only and may not be modified. Directory Path for this Server
+# should be valid for each of the following Connection of Server.
+DirPath.SASClientConnection[3]=Connection: FCFBU1 BU1:ETL AML
+
+DirPath[4]=SASBAP
+# The following Database Server properties are provided for
+# context only and may not be modified. Directory Path for this Server
+# should be valid for each of the following Connection of Server.
+DirPath.SASClientConnection[4]=Connection: FCFBU2 Core:ETL AML
+
+DirPath[5]=SASBAP
+# The following Database Server properties are provided for
+# context only and may not be modified. Directory Path for this Server
+# should be valid for each of the following Connection of Server.
+DirPath.SASClientConnection[5]=Connection: FCFBU1 Stage:ETL AML
+
+DirPath[6]=SASBAP
+# The following Database Server properties are provided for
+# context only and may not be modified. Directory Path for this Server
+# should be valid for each of the following Connection of Server.
+DirPath.SASClientConnection[6]=Connection: Screening:ETL AML

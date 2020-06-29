@@ -1,0 +1,5 @@
+D:\opt\sasinside\SASHome\SASPlatformObjectFramework\9.4
+
+PS D:\opt\sasinside\SASHome\SASPlatformObjectFramework\9.4> .\ExportPackage.exe -profile SASAdmin -package "path/file.spk"
+\Desktop\SAS Meta\ETL AML Oracle-script.spk" -objects "/System/Servers/ETL AML(Server)" -subprop
+
