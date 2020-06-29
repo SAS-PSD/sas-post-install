@@ -6,8 +6,6 @@ name: Publish Maven Package
 on:
   push:
     branches: [ master ]
-    tags:
-      - 'v*'
   pull_request:
     branches: [ master ]
 
@@ -40,8 +38,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        tag_name: v1.0.1
+        release_name: Release v1.0.1
         body: |
           Changes in this Release
           - Update Copy Script
