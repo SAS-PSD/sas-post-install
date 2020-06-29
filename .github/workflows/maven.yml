@@ -30,4 +30,4 @@ jobs:
         sed -i 's/${PACKAGE_VERSION}/${{ env.PACKAGE_VERSION }}/g' pom.xml
         mvn deploy -s settings.xml
       env:
-        GITHUB_TOKEN: ${{ secrets.SAS_REPO_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
