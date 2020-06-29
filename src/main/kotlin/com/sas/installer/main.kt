@@ -14,8 +14,8 @@ import java.sql.DriverManager
 
 fun main() {
     var choose: Int?
+    println("Welcome to installer ...\n1- setup folders\n2- setup AML Stag\n3- setup BU1\n4- setup BU2\n5- Exit")
     do {
-        println("Welcome to installer ...\n1- setup folders\n2- setup AML Stag\n3- setup BU1\n4- setup BU2\n5- Exit")
         choose = readLine()?.toInt()
         when (choose) {
             1 -> setupFolders()
@@ -90,7 +90,7 @@ private fun setupFolders() {
 
 
     println("# Copy files...")
-    val copyFiles = listOf("SASData/DM", "SASCode/Screening")
+    val copyFiles = listOf("SASData/DM", "SASCode/Screening","SASCode/Screening")
     for (folder in copyFiles)
         File("./$folder")
                 .copyRecursively(File("$homePath/$folder"),
