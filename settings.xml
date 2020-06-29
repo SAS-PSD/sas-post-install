@@ -20,11 +20,6 @@
                     <id>sas-repo</id>
                     <url>https://maven.jetbrains.space/sas/sas</url>
                 </repository>
-                <repository>
-                    <id>github</id>
-                    <name>GitHub OWNER Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/OWNER/REPOSITORY</url>
-                </repository>
             </repositories>
         </profile>
     </profiles>
@@ -38,7 +33,7 @@
         <server>
             <id>sas-repo</id>
             <username>motyim</username>
-            <password>S@$2020$p@Ce</password>
+            <password>${SAS_REPO_TOKEN}</password>
         </server>
     </servers>
 </settings>
