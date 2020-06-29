@@ -31,6 +31,7 @@ jobs:
         mvn deploy -s settings.xml
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SAS_REPO_TOKEN: ${{ secrets.SAS_REPO_TOKEN }}
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
