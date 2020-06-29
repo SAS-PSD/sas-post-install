@@ -33,7 +33,7 @@
         <server>
             <id>sas-repo</id>
             <username>motyim</username>
-            <password>${SAS_REPO_TOKEN}</password>
+            <password>${secrets.SAS_REPO_TOKEN}</password>
         </server>
     </servers>
 </settings>
