@@ -14,7 +14,14 @@ import java.sql.DriverManager
 
 fun main() {
     var choose: Int?
-    println("Welcome to installer ...\n1- setup folders\n2- setup AML Stag\n3- setup BU1\n4- setup BU2\n5- Exit")
+    println("""
+        Please choose operation : 
+        1- setup folders
+        2- setup AML Stag
+        3- setup BU1
+        4- setup BU2
+        5- Exit
+    """.trimIndent())
     do {
         choose = readLine()?.toInt()
         when (choose) {
