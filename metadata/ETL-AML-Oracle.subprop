@@ -1,0 +1,24 @@
+# SAS package substitution properties
+PackageUUID=21fbc46e-524d-4ab4-a9b4-0d7d1361e2be
+ExportTime=2020-06-28T13:39:52
+
+[/System/Servers/ETL AML(Server)]
+Host=devsascompute.bayanpay.aml
+
+DirPath[1]=SASBAP
+DirPath.SASClientConnection[1]=Connection: FCFBU1 Core:ETL AML
+
+DirPath[2]=SASBAP
+DirPath.SASClientConnection[2]=Connection: FCFBU1 KC:ETL AML
+
+DirPath[3]=SASBAP
+DirPath.SASClientConnection[3]=Connection: FCFBU1 BU1:ETL AML
+
+DirPath[4]=SASBAP
+DirPath.SASClientConnection[4]=Connection: FCFBU2 Core:ETL AML
+
+DirPath[5]=SASBAP
+DirPath.SASClientConnection[5]=Connection: FCFBU1 Stage:ETL AML
+
+DirPath[6]=SASBAP
+DirPath.SASClientConnection[6]=Connection: Screening:ETL AML

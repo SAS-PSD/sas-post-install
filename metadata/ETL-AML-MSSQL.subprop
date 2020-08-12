@@ -1,0 +1,44 @@
+# SAS package substitution properties
+PackageUUID=feb734e1-7757-492e-827f-b3c9ecb4d807
+ExportTime=2020-06-28T13:46:55
+
+# --------------------------- Instructions ---------------------------
+#
+# This property file can be used during a batch import process
+# to apply specific changes to the objects being imported.
+# This file can potentially contain two types of properties:
+# connection properties and substitution properties.
+#
+# Connection properties are used to describe the connection between an
+# object being imported and an existing object on the target metadata
+# server.  All of these properties are included within sections
+# labeled [Connections].
+#
+# To update the connection property settings, modify the properties
+# containing the keyword "Target" in their name.  This includes
+# entries labeled "TargetName", "TargetPath", or "TargetDirectory".
+#
+# For instance, to change which application server the objects being
+# imported should be connected to, the following change can be made:
+# ApplicationServer[1].SourceName=SASMain
+# ApplicationServer[1].TargetName=SAS Application Server
+#
+# When the package file is imported, any object that was originally 
+# associated to "SASMain" on the source server will now be 
+# associated to "SAS Application Server" on the target server.
+#
+# Substitution properties allow modifications to object-specific
+# values.  These values may include physical paths, descriptions,
+# or port numbers, for example.  All of these properties are included
+# within sections labeled by an object's path.
+#
+# To update an object-specific property value, simply modify the
+# proper value.  For instance, to change which path a library uses,
+# edit the value of the "DirPath" property.
+# Do not modify any "Path" property that contains the keyword
+# "ApplicationServer".  This property is used as context only.
+#
+# --------------------------------------------------------------------
+
+[/System/Servers/ETL AML(Server)]
+Host=devsascompute.bayanpay.aml

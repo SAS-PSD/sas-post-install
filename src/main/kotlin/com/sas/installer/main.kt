@@ -10,6 +10,7 @@ import oracle.jdbc.OracleDriver
 import java.io.File
 import java.sql.Connection
 import java.sql.DriverManager
+import java.util.concurrent.TimeUnit
 
 
 fun main() {
@@ -20,7 +21,8 @@ fun main() {
         2- setup AML Stag
         3- setup BU1
         4- setup BU2
-        5- Exit
+        5- setup metadata
+        0- Exit
     """.trimIndent())
     do {
         choose = readLine()?.toInt()
@@ -29,9 +31,12 @@ fun main() {
             2 -> setupAML()
             3 -> setupBU1()
             4 -> setupBU2()
+            5 -> setupMetaData()
         }
-    } while (choose != 5)
+    } while (choose != 0)
 }
+
+
 
 fun setupBU1() {
     val changelogFiles = listOf("liquibase/fcfcore.changelog.xml", "liquibase/fcfkc.changelog.xml")
